@@ -54,7 +54,7 @@ group :test do
   # Easy installation and use of web drivers to run system tests with browsers
   gem 'webdrivers'
   gem 'rspec-rails', '~> 4.0', '>= 4.0.1'
-  gem 'factory_girl_rails', '~> 4.9'
+  gem 'factory_bot_rails', '~> 4.9'
   gem 'rails-controller-testing', '~> 1.0', '>= 1.0.5'
   gem 'headless', '~> 2.3', '>= 2.3.1'
   gem 'poltergeist', '~> 1.18', '>= 1.18.1'
