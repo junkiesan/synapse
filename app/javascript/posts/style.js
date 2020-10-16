@@ -48,3 +48,5 @@ function randomColor() {
   var color = colorSet[Math.floor(Math.random() * colorSet.length)];
   return color;
 }
+
+export { randomColor };
