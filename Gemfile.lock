@@ -273,7 +273,7 @@ DEPENDENCIES
   faker
   headless (~> 2.3, >= 2.3.1)
   jbuilder (~> 2.7)
-  jquery-rails
+  jquery-rails (~> 4.4)
   launchy
   listen (~> 3.2)
   poltergeist
