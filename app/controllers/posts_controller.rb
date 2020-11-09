@@ -45,7 +45,6 @@ class PostsController < ApplicationController
       category: params[:category],
       branch: params[:action]
     }).call
-    end
   end
   
   def posts_for_branch(branch)
