@@ -15,4 +15,13 @@ Rails.application.routes.draw do
       get 'team'
     end
   end
+  # Conversations
+  namespace :private do 
+    resources :conversations, only: [:create] do
+      member do
+        post :close
+      end
+    end
+    resources :messages, only: [:index, :create]
+  end
 end
