@@ -12,7 +12,6 @@ function subToGroupConversationChannel(id) {
           connected: function() {},
           disconnected: function() {},
           received: function(data) {
-              console.log('sawp');
               // prepend link to the conversation 
               // to the top of conversations menu list
               modifyConversationsMenuList(data['conversation_id']);
