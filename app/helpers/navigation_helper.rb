@@ -1,4 +1,14 @@
 module NavigationHelper
+
+  # return a conversation header partial's path
+  def conversation_header_partial_path(conversation)
+    if conversation.class == Private::Conversation
+      'layouts/navigation/header/dropdowns/conversations/private'
+    else
+      'layouts/navigation/header/dropdowns/conversations/group'
+    end  
+  end
+
   def collapsible_links_partial_path
     if user_signed_in?
       'layouts/navigation/collapsible_elements/signed_in_links'
@@ -20,15 +30,6 @@ module NavigationHelper
     partials
   end
 
-  # return a conversation header partial's path
-  def conversation_header_partial_path(conversation)
-    if conversation.class == Private::Conversation
-      'layouts/navigation/header/dropdowns/conversations/private_conversation'
-    else
-      'layouts/navigation/header/dropdowns/conversations/group_conversation'
-    end  
-  end
-
   def nav_contact_requests_partial_path
     # if contact requests exist
     if current_user.pending_received_contact_requests.present? 
@@ -37,4 +38,5 @@ module NavigationHelper
       'layouts/navigation/header/dropdowns/contact_requests/no_requests'
     end
   end
+
 end
