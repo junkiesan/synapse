@@ -1,13 +1,20 @@
 Rails.application.routes.draw do
-  # Devise setup
   devise_for :users, :controllers => {:registrations => "registrations"}
+
   devise_scope :user do
     get 'login', to: 'devise/sessions#new'
+  end
+
+  devise_scope :user do
     get 'signup', to: 'devise/registrations#new'
   end
-  # Home page
+
   root to: 'pages#index'
-  # Post routes
+  get 'messenger', to: 'messengers#index'
+  get 'get_private_conversation', to: 'messengers#get_private_conversation'
+  get 'get_group_conversation', to: 'messengers#get_group_conversation'
+  get 'open_messenger', to: 'messengers#open_messenger'
+
   resources :posts do
     collection do
       get 'hobby'
@@ -15,7 +22,7 @@ Rails.application.routes.draw do
       get 'team'
     end
   end
-  # Conversations
+
   namespace :private do 
     resources :conversations, only: [:create] do
       member do
@@ -25,8 +32,7 @@ Rails.application.routes.draw do
     end
     resources :messages, only: [:index, :create]
   end
-  resources :contacts, only: [:create, :update, :destroy]
-  # Group Conversations
+
   namespace :group do 
     resources :conversations do
       member do
@@ -35,10 +41,8 @@ Rails.application.routes.draw do
       end
     end
     resources :messages, only: [:index, :create]
-  end 
+  end
 
-  get 'messenger', to: 'messengers#index'
-  get 'get_private_conversation', to: 'messengers#get_private_conversation'
-  get 'get_group_conversation', to: 'messengers#get_group_conversation'
-  get 'open_messenger', to: 'messengers#open_messenger'
+  resources :contacts, only: [:create, :update, :destroy]
+
 end
